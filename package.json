@@ -1,0 +1,26 @@
+{
+    "name": "orderbook",
+    "version": "0.0.0",
+    "description": "Via orderbook.",
+    "main": "./lib/main",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "via",
+        "trading",
+        "orderbook"
+    ],
+    "repository": "https://github.com/via-platform/orderbook",
+    "author": "Dakota Gordon",
+    "engines": {
+        "via": "*"
+    },
+    "dependencies": {
+        "bintrees": "^1.0.2",
+        "etch": "^0.12.7",
+        "num-plus": "0.0.1",
+        "underscore-plus": "^1.0.0",
+        "via-table": "^0.0.1"
+    }
+}
