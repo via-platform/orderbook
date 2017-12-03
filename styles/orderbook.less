@@ -1,4 +1,5 @@
 @import "variables";
+@import "ui-variables";
 
 @orderbook-header-height: 32px;
 @orderbook-border-width: 2px;
@@ -6,7 +7,6 @@
 
 .orderbook
 {
-    // background: #333;
     display: flex;
     flex-direction: column;
 
@@ -14,6 +14,7 @@
     {
         height: @orderbook-header-height;
         line-height: @orderbook-header-height - @orderbook-border-width;
+        text-align: right;
 
         &:first-child
         {
@@ -36,12 +37,13 @@
     {
         border-bottom: @orderbook-border-width solid @orderbook-border-color;
         border-top: @orderbook-border-width solid @orderbook-border-color;
-        height: @orderbook-header-height;
-        line-height: @orderbook-header-height - (2 * @orderbook-border-width);
+        height: @orderbook-header-height - 4;
+        line-height: @orderbook-header-height - (2 * @orderbook-border-width) - 4;
         font-size: 13px;
         font-weight: 700;
         font-family: Inconsolata;
         display: flex;
+        margin: 4px 0;
 
         .currency, .value
         {
@@ -64,6 +66,22 @@
             span
             {
                 color: #FFF;
+            }
+        }
+
+        &.bids
+        {
+            .td.price
+            {
+                color: @primary-color;
+            }
+        }
+
+        &.asks
+        {
+            .td.price
+            {
+                color: @background-color-error;
             }
         }
     }
