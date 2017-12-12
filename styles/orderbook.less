@@ -1,9 +1,9 @@
 @import "variables";
 @import "ui-variables";
 
-@orderbook-header-height: 32px;
-@orderbook-border-width: 2px;
-@orderbook-border-color: #444;
+@orderbook-header-height: 33px;
+@orderbook-border-width: 1px;
+@orderbook-border-color: #181818;
 
 .orderbook
 {
@@ -14,7 +14,6 @@
     {
         height: @orderbook-header-height;
         line-height: @orderbook-header-height - @orderbook-border-width;
-        text-align: right;
 
         &:first-child
         {
@@ -45,10 +44,21 @@
         display: flex;
         margin: 4px 0;
 
-        .currency, .value
+        > div
         {
             flex: 1;
+            padding: 0 10px;
         }
+
+        .value
+        {
+            text-align: right;
+        }
+    }
+
+    .aggregation
+    {
+
     }
 
     .via-table
@@ -62,6 +72,7 @@
             font-family: Inconsolata;
             color: #555;
             text-align: right;
+            padding: 0 10px;
 
             span
             {
