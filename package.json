@@ -22,5 +22,12 @@
         "num-plus": "0.0.1",
         "underscore-plus": "^1.0.0",
         "via-table": "^0.0.1"
+    },
+    "consumedServices": {
+        "action-bar": {
+            "versions": {
+                "^0.0.0": "consumeActionBar"
+            }
+        }
     }
 }
