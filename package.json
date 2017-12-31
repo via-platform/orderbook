@@ -19,7 +19,6 @@
   "dependencies": {
     "bintrees": "^1.0.2",
     "etch": "^0.12.7",
-    "num-plus": "0.0.1",
     "underscore-plus": "^1.0.0",
     "via-table": "^0.0.1"
   },
