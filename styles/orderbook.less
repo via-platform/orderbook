@@ -68,7 +68,45 @@
 
     .aggregation
     {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 
+    .aggregation-value
+    {
+        width: 60px;
+        text-align: right;
+    }
+
+    .change-aggregation
+    {
+        width: 22px;
+        height: 22px;
+        opacity: 0.4;
+        transition: opacity ease 0.2s;
+
+        &.plus
+        {
+            background: url('via://orderbook/images/plus.svg') center center no-repeat;
+            background-size: 14px auto;
+        }
+
+        &.minus
+        {
+            background: url('via://orderbook/images/minus.svg') center center no-repeat;
+            background-size: 14px auto;
+        }
+
+        &:hover
+        {
+            opacity: 0.7;
+        }
+
+        &:active
+        {
+            opacity: 1;
+        }
     }
 
     .via-table
