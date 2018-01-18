@@ -1,6 +1,7 @@
 @import "variables";
 @import "ui-variables";
 
+@orderbook-tools-height: 24px;
 @orderbook-header-height: 33px;
 @orderbook-border-width: 1px;
 @orderbook-border-color: #181818;
@@ -10,33 +11,66 @@
     display: flex;
     flex-direction: column;
 
-    .symbol
+    .orderbook-tools
     {
-        cursor: default;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        max-width: 180px;
+        height: @orderbook-tools-height + 1;
+        border-bottom: 1px solid @pane-border-color;
+        background: @pane-background-color;
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+        color: #FFF;
+        -webkit-font-smoothing: auto;
 
-        &:hover
+        .orderbook-tools-left, .orderbook-tools-right
         {
-            color: @primary-color;
-        }
-    }
-
-    .thead
-    {
-        height: @orderbook-header-height;
-        line-height: @orderbook-header-height - @orderbook-border-width;
-
-        &:first-child
-        {
-            border-bottom: @orderbook-border-width solid @orderbook-border-color;
+            display: flex;
+            align-items: center;
         }
 
-        &:last-child
+        .orderbook-tools-left
         {
-            border-top: @orderbook-border-width solid @orderbook-border-color;
+            .btn
+            {
+                border-right: 1px solid @pane-border-color;
+            }
+        }
+
+        .orderbook-tools-right
+        {
+            .btn
+            {
+                border-left: 1px solid @pane-border-color;
+            }
+        }
+
+        .orderbook-tools-spacer
+        {
+            flex: 1;
+        }
+
+        .btn
+        {
+            height: @orderbook-tools-height;
+            line-height: @orderbook-tools-height;
+
+            &.symbol
+            {
+                font-family: 'Inconsolata';
+                font-size: 13px;
+                font-weight: 700;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 180px;
+                color: @text-color;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+
+        &.bottom
+        {
+            border-bottom: 0;
+            border-top: 1px solid @pane-border-color;
         }
     }
 
@@ -44,17 +78,16 @@
     {
         flex: 1;
         overflow: auto;
+        background: @pane-content-background-color;
     }
 
     .spread
     {
         border-bottom: @orderbook-border-width solid @orderbook-border-color;
         border-top: @orderbook-border-width solid @orderbook-border-color;
-        height: @orderbook-header-height - 4;
-        line-height: @orderbook-header-height - (2 * @orderbook-border-width) - 4;
-        font-size: 13px;
-        font-weight: 700;
-        font-family: Inconsolata;
+        background: @pane-background-color;
+        height: @orderbook-tools-height + 2;
+        line-height: @orderbook-tools-height;
         display: flex;
         margin: 4px 0;
 
@@ -67,6 +100,16 @@
         .value
         {
             text-align: right;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: Inconsolata;
+        }
+
+        .currency
+        {
+            font-size: 11px;
+            color: @text-color-subtle;
+            -webkit-font-smoothing: auto;
         }
     }
 
@@ -77,39 +120,40 @@
         justify-content: flex-end;
     }
 
+    .aggregation-title
+    {
+        padding-left: 10px;
+        height: @orderbook-tools-height;
+        line-height: @orderbook-tools-height;
+        color: @text-color-subtle;
+    }
+
     .aggregation-value
     {
-        width: 60px;
-        text-align: right;
+        width: 64px;
+        text-align: center;
+        border-left: 1px solid @pane-border-color;
+        height: @orderbook-tools-height;
+        line-height: @orderbook-tools-height;
+        pointer-events: none;
     }
 
     .change-aggregation
     {
-        width: 22px;
-        height: 22px;
-        opacity: 0.4;
-        transition: opacity ease 0.2s;
+        width: @orderbook-tools-height;
+        padding: 0;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 10px auto;
 
         &.plus
         {
-            background: url('via://orderbook/images/plus.svg') center center no-repeat;
-            background-size: 14px auto;
+            background-image: url('via://orderbook/images/plus.svg');
         }
 
         &.minus
         {
-            background: url('via://orderbook/images/minus.svg') center center no-repeat;
-            background-size: 14px auto;
-        }
-
-        &:hover
-        {
-            opacity: 0.7;
-        }
-
-        &:active
-        {
-            opacity: 1;
+            background-image: url('via://orderbook/images/minus.svg');
         }
     }
 
@@ -133,15 +177,14 @@
 
             &.scale
             {
-                padding: 0;
+                padding: 4px 0;
                 flex: 0.7;
             }
         }
 
         .scale-bar
         {
-            min-width: 2px;
-            height: 100%;
+            height: 12px;
         }
 
         &.bids
@@ -151,9 +194,14 @@
                 color: @primary-color;
             }
 
+            .td.scale
+            {
+                border-left: 2px solid fade(@primary-color-up, 40%);
+            }
+
             .scale-bar
             {
-                background-color: fade(@primary-color, 40%);
+                background-color: fade(@primary-color-up, 40%);
             }
         }
 
@@ -164,9 +212,14 @@
                 color: @background-color-error;
             }
 
+            .td.scale
+            {
+                border-left: 2px solid fade(@primary-color-down, 40%);
+            }
+
             .scale-bar
             {
-                background-color: fade(@background-color-error, 40%);
+                background-color: fade(@primary-color-down, 40%);
             }
         }
     }
