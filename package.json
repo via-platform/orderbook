@@ -17,7 +17,6 @@
     "via": "*"
   },
   "dependencies": {
-    "bintrees": "^1.0.2",
     "etch": "^0.12.7",
     "underscore-plus": "^1.0.0",
     "via-table": "^0.0.1"
