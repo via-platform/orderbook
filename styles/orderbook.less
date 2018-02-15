@@ -2,89 +2,28 @@
 @import "ui-variables";
 
 @orderbook-tools-height: 24px;
-@orderbook-header-height: 33px;
 @orderbook-border-width: 1px;
-@orderbook-border-color: #181818;
+@orderbook-border-color: @header-border-color;
 
 .orderbook
 {
     display: flex;
     flex-direction: column;
 
-    .orderbook-tools
-    {
-        height: @orderbook-tools-height + 1;
-        align-items: center;
-        font-size: 11px;
-        color: #FFF;
-        -webkit-font-smoothing: auto;
-
-        .orderbook-tools-left, .orderbook-tools-right
-        {
-            display: flex;
-            align-items: center;
-        }
-
-        .orderbook-tools-left
-        {
-            .btn
-            {
-                border-right: 1px solid @pane-border-color;
-            }
-        }
-
-        .orderbook-tools-right
-        {
-            .btn
-            {
-                border-left: 1px solid @pane-border-color;
-            }
-        }
-
-        .orderbook-tools-spacer
-        {
-            flex: 1;
-        }
-
-        .btn
-        {
-            height: @orderbook-tools-height;
-            line-height: @orderbook-tools-height;
-
-            &.symbol
-            {
-                font-family: 'Inconsolata';
-                font-size: 13px;
-                font-weight: 700;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                max-width: 180px;
-                color: @text-color;
-                -webkit-font-smoothing: antialiased;
-            }
-        }
-
-        &.bottom
-        {
-            border-bottom: 0;
-            border-top: 1px solid @pane-border-color;
-        }
-    }
-
-    .tbody
+    .orderbook-table
     {
         flex: 1;
         overflow: auto;
-        background: @pane-content-background-color;
+        background: @pane-background-color;
     }
 
     .spread
     {
         border-bottom: @orderbook-border-width solid @orderbook-border-color;
         border-top: @orderbook-border-width solid @orderbook-border-color;
-        background: #282828;
-        height: @orderbook-tools-height + 2;
-        line-height: @orderbook-tools-height;
+        background: @header-background-color;
+        height: @orderbook-tools-height;
+        line-height: @orderbook-tools-height - 2;
         display: flex;
         margin: 4px 0;
 
@@ -99,7 +38,8 @@
             text-align: right;
             font-size: 13px;
             font-weight: 700;
-            font-family: Inconsolata;
+            font-family: @font-family-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         .currency
@@ -110,29 +50,21 @@
         }
     }
 
-    .aggregation
-    {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
     .aggregation-title
     {
-        padding-left: 10px;
-        height: @orderbook-tools-height;
-        line-height: @orderbook-tools-height;
         color: @text-color-subtle;
+        font-size: 11px;
+        // font-weight: 500;
     }
 
     .aggregation-value
     {
-        width: 80px;
-        text-align: center;
-        border-left: 1px solid @pane-border-color;
-        height: @orderbook-tools-height;
-        line-height: @orderbook-tools-height;
-        pointer-events: none;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: @font-family-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 0 10px;
+        color: @text-color;
     }
 
     .change-aggregation
@@ -142,6 +74,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 10px auto;
+        opacity: 0.6;
 
         &.plus
         {
@@ -152,36 +85,46 @@
         {
             background-image: url('via://orderbook/images/minus.svg');
         }
+
+        &:hover, &:active
+        {
+            opacity: 0.8;
+        }
     }
 
     .via-table
     {
         min-height: 100px;
 
+        .tr
+        {
+            height: 18px;
+        }
+
         .td
         {
             font-size: 13px;
             font-weight: 700;
-            font-family: Inconsolata;
-            color: #555;
+            font-family: @font-family-serif;
+            color: fade(@text-color-subtle, 40%);
             text-align: right;
             padding: 0 10px;
 
             span
             {
-                color: #FFF;
+                color: @text-color;
             }
 
             &.scale
             {
-                padding: 4px 0;
+                padding: 0;
                 flex: 0.7;
             }
         }
 
         .scale-bar
         {
-            height: 12px;
+            height: 18px;
         }
 
         &.bids
@@ -191,14 +134,10 @@
                 color: @primary-color;
             }
 
-            .td.scale
-            {
-                border-left: 2px solid fade(@primary-color-up, 40%);
-            }
-
             .scale-bar
             {
-                background-color: fade(@primary-color-up, 40%);
+                background-color: fade(@primary-color-up, 60%);
+                min-width: 2px;
             }
         }
 
@@ -209,14 +148,10 @@
                 color: @background-color-error;
             }
 
-            .td.scale
-            {
-                border-left: 2px solid fade(@primary-color-down, 40%);
-            }
-
             .scale-bar
             {
-                background-color: fade(@primary-color-down, 40%);
+                background-color: fade(@primary-color-down, 60%);
+                min-width: 2px;
             }
         }
     }
