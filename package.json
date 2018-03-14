@@ -1,6 +1,6 @@
 {
   "name": "orderbook",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Via orderbook.",
   "main": "./lib/main",
   "scripts": {
