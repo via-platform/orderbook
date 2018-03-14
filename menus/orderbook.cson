@@ -1,0 +1,11 @@
+'menu': [
+  {
+    'label': 'View'
+    'submenu': [
+      'label': 'Components'
+      'submenu': [
+        { 'label': 'Orderbook', 'command': 'orderbook:create-orderbook' }
+      ]
+    ]
+  }
+]

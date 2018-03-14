@@ -1,0 +1,15 @@
+'.orderbook':
+  'm': 'orderbook:change-market'
+  'c': 'orderbook:center'
+
+'.platform-darwin .orderbook':
+  'cmd-=': 'orderbook:increase-aggregation'
+  'cmd-+': 'orderbook:increase-aggregation'
+  'cmd--': 'orderbook:decrease-aggregation'
+  'cmd-_': 'orderbook:decrease-aggregation'
+
+'.platform-win32 .orderbook, .platform-linux .orderbook':
+  'ctrl-=': 'orderbook:increase-aggregation'
+  'ctrl-+': 'orderbook:increase-aggregation'
+  'ctrl--': 'orderbook:decrease-aggregation'
+  'ctrl-_': 'orderbook:decrease-aggregation'
