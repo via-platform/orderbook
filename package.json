@@ -21,6 +21,9 @@
     "underscore-plus": "^1.0.0",
     "via-table": "^0.2.0"
   },
+  "deserializers": {
+    "Orderbook": "deserialize"
+  },
   "consumedServices": {
     "action-bar": {
       "versions": {
