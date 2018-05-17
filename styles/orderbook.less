@@ -4,6 +4,8 @@
 @orderbook-tools-height: 24px;
 @orderbook-border-width: 1px;
 @orderbook-border-color: @header-border-color;
+@orderbook-row-height: 18px;
+@orderbook-row-count: 50;
 
 .orderbook
 {
@@ -99,11 +101,11 @@
 
     .via-table
     {
-        min-height: 100px;
+        height: @orderbook-row-height * @orderbook-row-count;
 
         .tr
         {
-            height: 18px;
+            height: @orderbook-row-height;
         }
 
         .td
@@ -148,6 +150,14 @@
 
         &.asks
         {
+            .table-body
+            {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                height: @orderbook-row-height * @orderbook-row-count;
+            }
+
             .td.price
             {
                 color: @background-color-error;
