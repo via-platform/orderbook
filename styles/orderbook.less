@@ -3,7 +3,7 @@
 
 @orderbook-tools-height: 24px;
 @orderbook-border-width: 1px;
-@orderbook-border-color: @header-border-color;
+@orderbook-border-color: #444;//@header-border-color;
 @orderbook-row-height: 16px;
 @orderbook-row-count: 50;
 
@@ -30,11 +30,12 @@
     {
         // border-bottom: @orderbook-border-width solid @orderbook-border-color;
         // border-top: @orderbook-border-width solid @orderbook-border-color;
-        background: @header-background-color;
-        height: @orderbook-tools-height;
-        line-height: @orderbook-tools-height - 2;
+        // background: #242424;//@header-background-color;
+        height: @orderbook-tools-height + 10;
+        line-height: @orderbook-tools-height;// - 2;
         display: flex;
         margin: 4px 0;
+        padding: 5px 0;
 
         > div
         {
@@ -100,6 +101,13 @@
         .tr
         {
             height: @orderbook-row-height;
+            user-select: none;
+            cursor: default;
+
+            &:hover
+            {
+                background: lighten(@pane-background-color, 10%);
+            }
         }
 
         .td
