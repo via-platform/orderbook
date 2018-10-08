@@ -14,4 +14,7 @@
   '.symbol-explorer .market': [
     {label: 'Open Orderbook', command: 'orderbook:create-orderbook'}
   ]
+  '.watchlist .market': [
+    {label: 'Open Orderbook', command: 'orderbook:create-orderbook'}
+  ]
 
